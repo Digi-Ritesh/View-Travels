@@ -45,6 +45,7 @@ interface TouristPlace {
   | "Religious";
 
   image: string;
+  imageUrl: string;
 
   tours: number;
   price: number;

@@ -1,4 +1,6 @@
-const touristPlaces =  [
+import { TouristPlace } from "@/types/allTypes";
+
+export const touristPlaces =  [
   {
     _id: "1",
     name: "Agra",
@@ -217,8 +219,9 @@ const touristPlaces =  [
     reviews: [],
     isActive: true,
   },
-];
+] satisfies TouristPlace[];
 
-export async function getPlaces() {
+
+export async function getPlaces(): Promise<TouristPlace[]> {
   return touristPlaces;
 }
