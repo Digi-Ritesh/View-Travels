@@ -2,14 +2,13 @@
 import { useState } from "react";
 
 import { AnimatePresence, motion } from "motion/react";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CustomNavLinkProps, NavbarLink } from "@/types/NavbarLink";
 import useAuth from "@/hooks/useAuth";
 import { RootState } from "@/redux/store";
-import { useSelector } from "react-redux";
 
 const navbarLinks: NavbarLink[] = [
   { title: "Home", path: "/" },
@@ -24,8 +23,8 @@ const navbarLinks: NavbarLink[] = [
 ];
 
 const Navbar = () => {
-  const { isLoggedIn, userPrinciple } = useAuth();
 
+  const { isLoggedIn, userPrinciple } = useAuth();
   return (
     <nav className="bg-(--neutral) shadow-md sticky top-0 z-50">
       <div className="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -38,6 +37,9 @@ const Navbar = () => {
             View & Travels
           </span>
         </Link>
+
+       
+
         <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           {(isLoggedIn && userPrinciple!= null) ? (
             <UserMenu />
@@ -49,6 +51,7 @@ const Navbar = () => {
               <Link href="/sign-up">
                 <button className="btn btn-success ml-2">Sign up</button>
               </Link>
+
             </>
           )}
 
@@ -192,20 +195,26 @@ const UserMenu = () => {
   );
 };
 
-const CustomNavLink = ({ link, index } : CustomNavLinkProps) => {
-  const cartItems = useSelector((state: RootState) => state.cart.cartItems);
- const pathname = usePathname();
+const CustomNavLink = ({ link, index }: CustomNavLinkProps) => {
+  const cartItems = useSelector(
+    (state: RootState) => state.cart.cartItems
+  );
+
+  const pathname = usePathname();
+
   return (
     <li key={index}>
       <Link
         href={link.path}
-        className={
-          `block py-2 px-3 rounded-sm md:bg-transparent md:p-0 font-semibold
-          ${pathname === link.path ? "text-primary" : "text-black hover:text-(--tertiary)"}`
-        }
+        className={`block py-2 px-3 rounded-sm md:bg-transparent md:p-0 font-semibold ${
+          pathname === link.path
+            ? "text-primary"
+            : "text-black hover:text-(--tertiary)"
+        }`}
         aria-current="page"
       >
-        {link.title} {link.path === "/cart" ? <>({cartItems.length})</> : null}
+        {link.title}
+        {link.path === "/cart" && <> ({cartItems.length})</>}
       </Link>
     </li>
   );

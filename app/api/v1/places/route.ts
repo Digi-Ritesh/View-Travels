@@ -22,15 +22,6 @@ export async function GET() {
   }
 }
 
-
-
-
-
-
-
-
-
-
 // const places = [
 //   {
 //     "name": "Agra",

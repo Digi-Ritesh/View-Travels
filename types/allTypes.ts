@@ -46,7 +46,7 @@ interface TouristPlace {
 
   image: string;
   imageUrl: string;
-
+   title?: string;
   tours: number;
   price: number;
 
@@ -58,6 +58,8 @@ interface TouristPlace {
   reviews?: Review[];
 
   isActive: boolean;
+  days?: string;
+  quantity?: number;
 }
 type User = {
   name?: string;

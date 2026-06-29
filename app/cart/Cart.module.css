@@ -1,0 +1,23 @@
+.container{
+max-width:1200px;
+margin:auto;
+padding:40px 20px;
+}
+
+.container h1{
+    margin-bottom:30px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:30px;
+}
+
+.empty{
+    height:50vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:25px;
+}
